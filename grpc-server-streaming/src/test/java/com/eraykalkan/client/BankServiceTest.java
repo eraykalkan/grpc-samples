@@ -1,20 +1,15 @@
 package com.eraykalkan.client;
 
-import com.eraykalkan.model.Balance;
-import com.eraykalkan.model.BalanceCheckRequest;
 import com.eraykalkan.model.BankServiceGrpc;
 import com.eraykalkan.model.WithDrawRequest;
 import com.eraykalkan.server.MoneyStreamingResponse;
-import com.google.common.util.concurrent.Uninterruptibles;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BankServiceTest {
@@ -27,7 +22,7 @@ public class BankServiceTest {
 
     @BeforeAll
     public void setup() {
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost",3334)
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 3334)
                 .usePlaintext()
                 .build();
         this.bankServiceBlockingStub = BankServiceGrpc.newBlockingStub(managedChannel);
@@ -41,7 +36,7 @@ public class BankServiceTest {
     @Test
     void withdrawTest() {
         WithDrawRequest withDrawRequest = WithDrawRequest.newBuilder()
-                .setAccountNumber(1).setAmonunt(50).build();
+                .setAccountNumber(1).setAmount(50).build();
         this.bankServiceBlockingStub.withdraw(withDrawRequest)
                 .forEachRemaining(money -> System.out.println("Received : " + money.getValue()));
     }
@@ -51,8 +46,8 @@ public class BankServiceTest {
     void withDrawAsyncTest() throws InterruptedException {
 
         WithDrawRequest withDrawRequest = WithDrawRequest.newBuilder()
-                .setAccountNumber(1).setAmonunt(50).build();
-        this.bankServiceStub.withdraw(withDrawRequest,moneyStreamingResponse);
+                .setAccountNumber(1).setAmount(50).build();
+        this.bankServiceStub.withdraw(withDrawRequest, moneyStreamingResponse);
         //Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
         latch.await();
     }

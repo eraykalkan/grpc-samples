@@ -11,7 +11,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     @Override
     public void withdraw(WithDrawRequest request, StreamObserver<Money> responseObserver) {
 
-        int amount = request.getAmonunt();
+        int amount = request.getAmount();
         int balance = 150;
 
         // for amount value of 50, the server will stream 5 responses
