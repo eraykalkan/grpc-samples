@@ -1,6 +1,6 @@
 package com.eraykalkan.client;
 
-/*import com.eraykalkan.model.Balance;
+import com.eraykalkan.model.Balance;
 import com.eraykalkan.model.BalanceCheckRequest;
 import com.eraykalkan.model.BankServiceGrpc;
 import io.grpc.ManagedChannel;
@@ -32,4 +32,4 @@ class BankClientTest {
         Assertions.assertEquals(50,balance.getAmount());
     }
 
-}*/
+}
