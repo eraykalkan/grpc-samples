@@ -23,7 +23,6 @@ class BankClientTest {
                 .usePlaintext()
                 .build();
         this.bankServiceStub = BankServiceGrpc.newStub(managedChannel);
-
     }
 
     @Test

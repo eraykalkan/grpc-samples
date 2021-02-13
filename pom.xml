@@ -12,6 +12,7 @@
         <module>grpc-server-streaming</module>
         <module>grpc-unary</module>
         <module>grpc-client-streaming</module>
+        <module>grpc-bidirectional-streaming</module>
     </modules>
     <name>grpc-samples</name>
 
