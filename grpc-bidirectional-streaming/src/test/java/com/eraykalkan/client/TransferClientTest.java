@@ -19,7 +19,7 @@ class TransferClientTest {
 
     @BeforeAll
     void setup() {
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 3335)
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 3336)
                 .usePlaintext()
                 .build();
         this.transferServiceStub = TransferServiceGrpc.newStub(managedChannel);
